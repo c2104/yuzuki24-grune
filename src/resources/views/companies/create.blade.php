@@ -1,10 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Companies</h1>
-
 <div class="container small">
-    <h1>Companies登録</h1>
+    <h2>企業登録</h2>
     <form action="{{ route('companies.store') }}" method="POST">
         @csrf
         <fieldset>

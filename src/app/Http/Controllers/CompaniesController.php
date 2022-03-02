@@ -20,8 +20,14 @@ class CompaniesController extends Controller
     public function index()
     {
         $companies = $this->companies->findAllCompaniess();
-        //prefucture
-        return view('companies.index', compact('companies'));
+
+        // 都道府県
+        $prefectures_collection = $this->prefecture->select('id', 'display_name')->get();
+        $prefectures = $prefectures_collection->mapWithkeys(function ($prefecture) {
+            return [$prefecture['id'] => $prefecture['display_name']];
+        });
+
+        return view('companies.index', compact('companies', 'prefectures'));
     }
 
     /**
@@ -61,9 +67,10 @@ class CompaniesController extends Controller
      */
     public function edit(Request $request, int $company_id)
     {
-        $companies = Companies::find($company_id);
-        return view('companies.edit', ['companies' => $companies]);
+        $company = Companies::find($company_id);
+        return view('companies.edit', compact('company'));
     }
+
     /**
      * 更新
      */
