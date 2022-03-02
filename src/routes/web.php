@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\CompaniesController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('layouts.app');
+    return view('welcome');
 });
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -28,10 +29,5 @@ Route::get('/companies/layout', [CompaniesController::class, 'layout'])->name('c
 
 Route::post('/companies/store', [CompaniesController::class, 'store'])->name('companies.store');
 
-Route::get('/companies/edit/{company_id}', 'CompaniesController@edit')->name('companies_edit');
-Route::post('/companies/edit/{company_id}', 'CompaniesController@update')->name('companies_update');
-
-
-
-
-
+Route::get('/companies/edit/{company_id}', [CompaniesController::class, 'edit'])->name('companies.edit');
+Route::post('/companies/edit/{company_id}', [CompaniesController::class, 'update'])->name('companies.update');

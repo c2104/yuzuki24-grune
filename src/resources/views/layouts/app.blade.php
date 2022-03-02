@@ -73,6 +73,12 @@
         @yield('content')
     </div>
 
+    <footer class="main-footer">
+        <div class="version hidden-xs">
+            <b>Version</b> 1.0.0
+        </div>
+    </footer>
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>

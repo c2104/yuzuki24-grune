@@ -3,8 +3,9 @@
 @section('content')
 <h1>Companies</h1>
 
+
+<a href="{{ route('companies.create') }}">{{ __('新規作成') }}</a>
 <table>
-    <a href="{{ route('companies_edit') }}?id={{ $companies->id }}">
     <thead>
       <tr>
         <th>Name</th>
@@ -18,16 +19,15 @@
     </thead>
     <tbody>
       @foreach ($companies as $company)
-      <tr>
-        <td>{{ $company->name }}</td>
-        <td>{{ $company->email }}</td>
-        <td>{{ $company->postcode }}</td>
-        <td>{{ $companies->prefecture }}</td>
-        <td>{{ $companies->address }}</td>
-        <td>{{date('Y/m/d', $timestamp)}}</td>
-      </tr>
-
-      <a href="{{ route('companies.create') }}">{{ __('新規作成') }}</a>
+        <tr>
+          <td>{{ $company->name }}</td>
+          <td>{{ $company->email }}</td>
+          <td>{{ $company->postcode }}</td>
+          <td>{{-- $companies->prefecture --}}</td>
+          <td>{{-- $companies->address --}}</td>
+          <td>{{-- date('Y/m/d', $timestamp) --}}</td>
+          <td><a href="{{ route('companies.edit', $company->id) }}">編集</a></td>
+        </tr>
 
       @endforeach
     </tbody>
