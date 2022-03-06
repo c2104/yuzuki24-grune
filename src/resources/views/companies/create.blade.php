@@ -78,38 +78,5 @@
     </fieldset>
     </form>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-<script>
-    new Vue({
-        el: '#app',
-        data: {
-            postcode: '',
-            prefecture_id: '',
-            city: '',
-            local: '',
-        },
-        methods: {
-            onClick: function() {
-                console.log('クリックしました')
-                const url = '/Backend/postal_search?'+ [
-                    'postcode='+ this.postcode,
-
-                ].join('&');
-                console.log(url)
-                axios.get(url).then((response) => {
-
-                    this.prefecture_id = response.data.prefecture_id;
-                    this.city = response.data.city;
-                    this.local = response.data.local;
-
-                });
-
-            }
-        }
-    });
-
-</script>
-
 
 @endsection
